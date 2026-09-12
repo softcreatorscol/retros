@@ -328,6 +328,10 @@
   .modal-body .apps{margin-bottom:24px;}
   .modal-body .apps h4{font-size:1.1rem;color:var(--navy);margin-bottom:8px;}
   .modal-body .apps ul{margin:0;padding-left:18px;color:var(--gray);font-size:.92rem;}
+  .modal-body .features{margin-bottom:24px;}
+  .modal-body .features h4{font-size:1.1rem;color:var(--navy);margin-bottom:8px;}
+  .modal-body .features ul{margin:0;padding-left:18px;color:var(--gray);font-size:.92rem;}
+  .modal-body .features ul li{margin-bottom:6px;}
   .modal-actions{display:flex;gap:12px;flex-wrap:wrap;}
   .disclaimer{font-size:.76rem;color:var(--gray);margin-top:20px;border-top:1px solid var(--line);padding-top:12px;}
 
@@ -448,7 +452,8 @@
       <div class="block-head" style="margin-top:56px;">
         <span class="kicker">EL FABRICANTE</span>
         <h2>Respaldados por XCMG</h2>
-        <p>Los equipos que distribuimos son fabricados por XCMG (Xuzhou Construction Machinery Group), uno de los grupos de maquinaria de construcción más grandes del mundo. Fundada en 1943 en Xuzhou, China, XCMG se ha mantenido a la vanguardia de la industria china del sector y hoy es la tercera compañía de maquinaria de construcción más grande a nivel mundial, con una red de servicio, repuestos y soporte técnico presente en más de 180 países.</p>
+        <p>Xuzhou Construction Machinery Group Co., Ltd. (XCMG) fue fundada en marzo de 1943. Desde entonces se ha mantenido a la vanguardia de la industria china de maquinaria de construcción, convirtiéndose en uno de los grupos empresariales más grandes, influyentes y competitivos del país, con las variedades y series de productos más completas del sector. Es la tercera empresa de maquinaria de construcción más grande del mundo, ocupa el puesto 65 entre las 500 empresas más grandes de China, el puesto 44 entre las 100 empresas manufactureras más grandes de China y el 2° lugar entre los 100 fabricantes de maquinaria más grandes de China.</p>
+        <p style="margin-top:12px;">Su valor fundamental es "asumir grandes responsabilidades, actuar con gran moral y lograr grandes logros", con un espíritu corporativo riguroso, práctico, progresivo y creativo, en el camino hacia convertirse en una empresa líder a nivel mundial capaz de crear valor real.</p>
       </div>
       <div class="strip" style="background:var(--blue-tint);margin:0 0 20px;">
         <div class="strip-inner" style="color:var(--navy);">
@@ -473,7 +478,15 @@
         </div>
         <div class="v">
           <h4>6,000+ ingenieros técnicos</h4>
-          <p>Y más de 300 distribuidores en el extranjero, incluido nuestro equipo.</p>
+          <p>Más de 5,000 personas en marketing y ventas, y más de 300 distribuidores en el extranjero, incluido nuestro equipo.</p>
+        </div>
+        <div class="v">
+          <h4>14 bases de fabricación</h4>
+          <p>Bases de fabricación y plantas KD (montaje de kits) a nivel mundial.</p>
+        </div>
+        <div class="v">
+          <h4>Servicio integral</h4>
+          <p>Cobertura preventa, venta, posventa y financiación en 183 países y regiones, con centros de atención al cliente dedicados a comunicación y satisfacción del cliente.</p>
         </div>
       </div>
 
@@ -481,6 +494,9 @@
         <h3>¿Buscando la máquina correcta para su obra?</h3>
         <p>Cuéntenos qué necesita y le recomendamos el equipo adecuado según carga, terreno y presupuesto.</p>
         <button class="btn orange" data-goto="contactenos">Hablar con ventas</button>
+      </div>
+      <div style="margin-top:28px;padding-bottom:12px;">
+        <button class="btn ghost" data-goto="productos">Ver catálogo completo &rarr;</button>
       </div>
     </div>
   </section>
@@ -524,11 +540,7 @@
       <div class="contact-grid">
         <div class="contact-info">
           <h3>Datos de contacto</h3>
-          <div class="row"><div><strong>Teléfono / WhatsApp</strong>+00 000 000 0000</div></div>
-          <div class="row"><div><strong>Correo electrónico</strong>ventas@xcmgmachinery.com.co</div></div>
-          <div class="row"><div><strong>Dirección</strong>Parque industrial, zona de maquinaria pesada</div></div>
-          <div class="row"><div><strong>Horario</strong>Lunes a sábado, 8:00 a.m. &ndash; 6:00 p.m.</div></div>
-          <p class="form-note">Reemplace estos datos con la información real de su empresa.</p>
+          <div class="row"><div><strong>Correo electrónico</strong><a href="mailto:mercado@xcmgmachinery.com">mercado@xcmgmachinery.com</a></div></div>
         </div>
         <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulario de ejemplo: conecte esto a su correo o CRM.');">
           <label for="nombre">Nombre</label>
@@ -576,9 +588,19 @@ const products = [
     tag: "EXCAVADORA DE ORUGAS",
     name: "Excavadora de orugas XE75GA",
     model: "Modelo XE75GA",
-    pdf: "fichas-tecnicas/EXCAVADORA_XE75GA.pdf",
+    pdf: "EXCAVADORA_XE75GA.pdf",
     miniSpec: {label:"Peso operativo", value:"7,700 kg"},
     desc: "Excavadora hidráulica de orugas serie G, con tanque de combustible extragrande, dispositivo de trabajo reforzado y válvula principal optimizada para movimientos complejos con mayor eficiencia energética.",
+    features: [
+      "Tanque de combustible extragrande, que reduce la frecuencia de reabastecimiento y el tiempo de espera en obra.",
+      "Válvula principal de segunda generación recientemente optimizada: mejor control en movimientos complejos, respuesta rápida y mayor eficiencia energética del sistema.",
+      "Dispositivo de trabajo reforzado, combinado con chasis y carrocería de mayor tamaño, para excavaciones y trituraciones de alta resistencia.",
+      "Configuración de batería dual para mayor capacidad de arranque.",
+      "Diseño de optimización NVH a nivel de vehículo: menores vibraciones y ruido.",
+      "Pantalla táctil con enfriamiento o calefacción al máximo con un solo botón, y sistema de aire fresco con circulación interna/externa con un solo botón.",
+      "Control seguro por Bluetooth en el vehículo.",
+      "Equipo opcional: tuberías de trituración, martillos hidráulicos, válvulas mecánicas e hidráulicas de cambio rápido y bloques de orugas de goma."
+    ],
     specGroups: [
       { title:"Información comercial", rows:[
         ["Categoría de producto","Excavadora de orugas"],
@@ -607,8 +629,15 @@ const products = [
         ["Ancho total","2,265 mm"],
         ["Altura total","2,645 mm"],
         ["Ancho de la plataforma","2,260 mm"],
+        ["Longitud de la vía (oruga)","2,825 mm"],
         ["Ancho total del tren de rodaje","2,250 mm"],
-        ["Radio mínimo de giro de cola","1,840 mm"]
+        ["Ancho de zapata","450 mm"],
+        ["Distancia del tambor","2,195 mm"],
+        ["Ancho de vía","1,800 mm"],
+        ["Espacio libre del contrapeso","813 mm"],
+        ["Distancia mínima al suelo","385 mm"],
+        ["Radio mínimo de giro de cola","1,840 mm"],
+        ["Altura de la vía (oruga)","696 mm"]
       ]},
       { title:"Alcance de trabajo", rows:[
         ["Altura máxima de excavación","7,085 mm"],
@@ -648,9 +677,18 @@ const products = [
     tag: "CARGADOR",
     name: "Cargadora compacta XC750K",
     model: "Modelo XC750K",
-    pdf: "fichas-tecnicas/MINICARGADOR_XC750K.pdf",
+    pdf: "MINICARGADOR_XC750K.pdf",
     miniSpec: {label:"Carga nominal", value:"900 kg"},
-    desc: "Cargador de dirección deslizante con motor Yanmar, doble velocidad hasta 18 km/h y dispositivo de accionamiento hidrostático para cambio rápido de accesorios en el sitio de trabajo.",
+    desc: "Minicargador compacto con configuración de marcha de dos velocidades, cabina presurizada y aire acondicionado. Adopta un sistema hidráulico de gran flujo pensado para condiciones exigentes como limpieza de establos, arena, pasto apilado y limpieza de vías.",
+    features: [
+      "Motor de marca reconocida: gran potencia, emisiones ultrabajas y mayor eficiencia de combustible.",
+      "Doble velocidad con máxima de hasta 18 km/h para alta eficiencia de trabajo y transferencias rápidas entre sitios.",
+      "Respuesta rápida ante condiciones de emergencia, como remoción rápida de nieve.",
+      "Accionamiento hidrostático para cambio rápido de accesorios directamente en el sitio de operación.",
+      "Bastidor de diseño serializado según tonelaje, optimizado por elementos finitos para una distribución de tensión razonable.",
+      "Piezas hidráulicas importadas de alta calidad para mayor confiabilidad.",
+      "Compatible con múltiples implementos: barredora inclinada, quitanieves, motocultor, barredora cerrada, cepilladora, cepilladora de tapas de alcantarilla, martillo rompedor, taladro helicoidal y zanjadora continua."
+    ],
     specGroups: [
       { title:"Información comercial", rows:[
         ["Categoría de producto","Cargador"],
@@ -662,8 +700,9 @@ const products = [
         ["Clasificación","4.9 / 5 (177 votos)"]
       ]},
       { title:"Carga", rows:[
-        ["Carga nominal","900 kg"],
-        ["Carga volcada (estática)","3,400 kg"],
+        ["Carga nominal","900 kg (750 kg)"],
+        ["Carga volcada (estática)","≥ 17.5 kN (15 kN)"],
+        ["Carga volcada (estática)","3,400 kg (3,200 kg)"],
         ["Fuerza máxima de tunelización","≥ 24 kN"]
       ]},
       { title:"Motor", rows:[
@@ -685,13 +724,27 @@ const products = [
       ]},
       { title:"Dimensiones y capacidad de cucharón", rows:[
         ["Altura máxima de funcionamiento","3,878 mm"],
+        ["Altura de la bisagra del cucharón","3,057 mm"],
         ["Altura superior de cabina","1,950 mm"],
+        ["Altura máxima del nivel inferior del cucharón","2,851 mm"],
         ["Longitud sin cucharón","2,533 mm"],
         ["Longitud con cucharón","3,360 mm"],
+        ["Ángulo de inclinación","40°"],
         ["Altura máxima de descarga","2,375 mm"],
+        ["Ángulo de colapso del cucharón de tierra","30°"],
+        ["Ángulo de rotación del cucharón en el punto más alto","83°"],
+        ["Distancia de descarga","575 mm"],
         ["Distancia entre ejes","1,027 mm"],
         ["Ángulo de salida","25°"],
-        ["Capacidad del cucharón (colmada)","0.45 m³"],
+        ["Distancia al suelo","185 mm"],
+        ["Radio de giro frontal (sin cucharón)","1,183 mm"],
+        ["Radio de giro frontal (con cucharón)","2,066 mm"],
+        ["Radio de giro trasero","1,564 mm"],
+        ["Longitud de la cola","1,005 mm"],
+        ["Pista de ruedas","1,380 mm"],
+        ["Ancho del borde del neumático","1,634 mm"],
+        ["Ancho del borde del cucharón","1,800 mm"],
+        ["Capacidad del cucharón (altura de apilamiento)","0.45 m³"],
         ["Capacidad del cucharón (a ras)","0.35 m³"]
       ]}
     ],
@@ -711,7 +764,7 @@ const products = [
     tag: "MINIEXCAVADORA",
     name: "Excavadora XE60GA",
     model: "Modelo XE60GA",
-    pdf: "fichas-tecnicas/EXCAVADORA_XE60GA.pdf",
+    pdf: "EXCAVADORA_XE60GA.pdf",
     miniSpec: {label:"Peso operativo", value:"6,050 kg"},
     desc: "Miniexcavadora compacta y de radio de giro reducido, ideal para paisajismo, construcción urbana y tendido de tuberías. Motor de alto par con bloqueo hidráulico de topadora estándar.",
     specGroups: [
@@ -792,9 +845,14 @@ const products = [
     tag: "MONTACARGAS",
     name: "Montacargas diésel XCB-D35",
     model: "Modelo XCB-D35",
-    pdf: "fichas-tecnicas/MONTACARGAS_XCB-D35.pdf",
+    pdf: "MONTACARGAS_XCB-D35.pdf",
     miniSpec: {label:"Capacidad de carga", value:"3,000 kg"},
-    desc: "Montacargas diésel de combustión interna, motor conforme a normativa de emisiones StageIIIA, con carrocería de fácil mantenimiento y peldaño de acceso amplio para el operador.",
+    desc: "Montacargas diésel XCMG de 3.5 t con altura de mástil de 2,075 mm. Usa motor Nacional III de Xinchai, de bajo consumo y potencia fuerte para carga y descarga, con buena capacidad de tracción en vías exteriores ligeramente irregulares.",
+    features: [
+      "Motores más limpios y eficientes, conformes a la normativa de emisiones StageIIIA a nivel mundial (opciones Isuzu C240PKJ o Mitsubishi S4S diésel).",
+      "Mantenimiento sencillo: cubiertas laterales desmontables y capó de amplia apertura para inspección cómoda; disposición integral de piezas eléctricas y otros dispositivos del sistema.",
+      "Entrada y salida más fáciles gracias a un escalón extra ancho y seguro, que reduce la fatiga del operador."
+    ],
     specGroups: [
       { title:"Información comercial", rows:[
         ["Categoría de producto","Máquina elevadora"],
@@ -805,29 +863,51 @@ const products = [
         ["Servicio postventa","Ingenieros disponibles para servicio en el extranjero"],
         ["Clasificación","4.9 / 5 (177 votos)"]
       ]},
-      { title:"Motor (opciones)", rows:[
-        ["Modelos disponibles","Xinchai 4D27G31 / Mitsubishi S4S / Isuzu C240"],
-        ["Potencia nominal","≈ 35 &ndash; 37 kW"],
+      { title:"Motor", rows:[
+        ["Modelo","Xinchai 4D27G31 (opciones: Isuzu C240PKJ / Mitsubishi S4S diésel)"],
+        ["Potencia nominal","36.8 kW / 2,500 rpm"],
+        ["Par nominal","174 N·m / 1,700 rpm"],
         ["Cilindros","4"],
-        ["Capacidad del tanque de combustible","70 L"]
+        ["Cilindrada","2.98 L"],
+        ["Capacidad del tanque de combustible","70 L"],
+        ["Batería","12 V / 80 Ah"]
       ]},
       { title:"Capacidad y dimensiones", rows:[
         ["Capacidad de carga","3,000 kg"],
         ["Centro de carga","500 mm"],
         ["Altura máx. de elevación","3,000 mm"],
+        ["Ascenso libre (mástil)","150 mm"],
         ["Tamaño de horquilla (L×An×Es)","1,070 × 125 × 50 mm"],
+        ["Rango de inclinación de mástil (adelante/atrás)","6° / 12°"],
+        ["Longitud total (sin horquilla)","2,760 mm"],
+        ["Altura de mástil (horquilla abajo)","2,075 mm"],
+        ["Altura total con horquilla elevada (con respaldo)","4,250 mm"],
+        ["Altura al protector de cabeza","2,140 mm"],
+        ["Cara frontal de horquilla al eje delantero","485 mm"],
+        ["Pasillo mínimo de apilamiento en ángulo recto","2,975 mm"],
         ["Peso del vehículo","4,780 kg"]
       ]},
       { title:"Chasis y rodaje", rows:[
         ["Ancho total","1,285 mm"],
         ["Radio de giro (exterior)","2,495 mm"],
         ["Distancia entre ejes","1,700 mm"],
-        ["Presión del sistema hidráulico","180 kg/cm²"]
+        ["Pisada (delantero/trasero)","1,060 / 970 mm"],
+        ["Distancia al suelo (mástil / marco)","120 / 135 mm"],
+        ["Llanta eje delantero","28×9-15-12PR"],
+        ["Llanta eje trasero","6.50-10-10PR"],
+        ["Presión del sistema hidráulico","180 kg/cm²"],
+        ["Freno de servicio","Pedal hidráulico"],
+        ["Freno de estacionamiento","Palanca manual mecánica"],
+        ["Transmisión","2 marchas adelante / 2 atrás, cambio de poder"]
       ]},
       { title:"Rendimiento", rows:[
         ["Velocidad de desplazamiento (con/sin carga)","18 / 19.5 km/h"],
-        ["Velocidad de elevación","450 / 500 mm/s"],
-        ["Capacidad de pendiente","18 / 20%"]
+        ["Velocidad de elevación (con/sin carga)","450 / 500 mm/s"],
+        ["Velocidad de encapotado (con/sin carga)","450 / 420 mm/s"],
+        ["Tiro máx. de barra de tiro (con/sin carga)","2,200 / 1,000 kg"],
+        ["Capacidad de pendiente a 1.6 km/h (con/sin carga)","18% / 20%"],
+        ["Distribución de peso, carga completa (delantero/trasero)","7,380 / 900 kg"],
+        ["Distribución de peso, sin carga (delantero/trasero)","1,820 / 2,960 kg"]
       ]}
     ],
     apps: ["Movimiento de materiales en patio","Carga y descarga de camiones","Almacén y logística de obra","Manejo de tarimas y contenedores"],
@@ -895,6 +975,11 @@ function openModal(id){
     <div class="model">${p.model}</div>
     <div class="icon-lg">${p.icon}</div>
     <p class="desc">${p.desc}</p>
+    ${p.features ? `
+    <div class="features">
+      <h4>Características destacadas</h4>
+      <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>` : ''}
     ${p.specGroups.map(g => `
       <div class="spec-group">
         <h4>${g.title}</h4>
