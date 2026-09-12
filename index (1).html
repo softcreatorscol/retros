@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xcmgmachinery.com.co &mdash; Maquinaria de construcción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2A5E;
+    --blue:#0057A8;
+    --blue-dark:#003D7A;
+    --blue-tint:#EAF2FB;
+    --orange:#F2921D;
+    --gray:#5B6670;
+    --ink:#1B1F24;
+    --paper:#FFFFFF;
+    --line:#DCE3EA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  h1,h2,h3,h4,.display{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    letter-spacing:.01em;
+    margin:0;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;cursor:pointer;}
+
+  /* ---------- header ---------- */
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    border-bottom:3px solid var(--orange);
+  }
+  .header-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    color:#fff;
+  }
+  .brand-mark{
+    width:34px;height:34px;flex:none;
+    background:var(--orange);
+    clip-path:polygon(0 100%, 0 30%, 30% 0, 100% 0, 100% 70%, 70% 100%);
+  }
+  .brand-name{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    font-size:1.15rem;
+    line-height:1;
+    letter-spacing:.01em;
+    white-space:nowrap;
+  }
+  .brand-name small{
+    display:block;
+    font-family:'Work Sans',sans-serif;
+    font-weight:500;
+    font-size:.6rem;
+    letter-spacing:.14em;
+    color:#9CB6DC;
+    white-space:normal;
+  }
+  nav.tabs{
+    display:flex;gap:2px;
+    flex-wrap:wrap;
+  }
+  nav.tabs button{
+    background:none;border:none;
+    color:#B9CBE6;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:600;
+    font-size:1.02rem;
+    padding:10px 16px;
+    border-bottom:3px solid transparent;
+    transition:color .15s, border-color .15s;
+  }
+  nav.tabs button:hover{color:#fff;}
+  nav.tabs button.active{color:#fff;border-bottom-color:var(--orange);}
+
+  /* ---------- layout / pages ---------- */
+  .page{display:none;}
+  .page.active{display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.1fr .9fr;
+    gap:40px;align-items:center;
+    padding:64px 24px 56px;
+    max-width:1180px;margin:0 auto;
+  }
+  .hero-tag{
+    display:inline-block;
+    color:var(--blue);
+    font-weight:600;
+    font-size:.85rem;
+    border-left:3px solid var(--blue);
+    padding-left:10px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:3.3rem;
+    line-height:.98;
+    color:var(--navy);
+  }
+  .hero h1 span{color:var(--blue);}
+  .hero p.lead{
+    margin-top:20px;
+    max-width:46ch;
+    color:var(--gray);
+    font-size:1.08rem;
+  }
+  .hero-actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 22px;
+    font-weight:600;font-size:.98rem;
+    border:2px solid var(--blue);
+    background:var(--blue);color:#fff;
+    text-decoration:none;
+  }
+  .btn:hover{background:var(--blue-dark);border-color:var(--blue-dark);}
+  .btn.ghost{background:transparent;color:var(--blue);}
+  .btn.ghost:hover{background:var(--blue);color:#fff;}
+  .btn.orange{background:var(--orange);color:#fff;border-color:var(--orange);}
+  .btn.orange:hover{background:#d97e10;border-color:#d97e10;}
+  .btn.small{padding:9px 16px;font-size:.88rem;}
+
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-art svg{width:82%;height:82%;}
+  .hero-art::before{
+    content:"";position:absolute;inset:14px;
+    border:2px solid var(--orange);
+    pointer-events:none;
+  }
+
+  .strip{
+    background:var(--navy);color:#fff;
+    padding:22px 24px;
+  }
+  .strip-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;gap:36px;flex-wrap:wrap;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:600;
+  }
+  .strip-inner div{display:flex;align-items:baseline;gap:8px;}
+  .strip-inner strong{font-size:1.7rem;color:var(--orange);}
+  .strip-inner span{color:#B9CBE6;font-size:.85rem;font-family:'Work Sans',sans-serif;font-weight:500;}
+
+  .block{padding:64px 24px;}
+  .block-head{max-width:640px;margin-bottom:38px;}
+  .block-head .kicker{
+    color:var(--blue);font-weight:600;font-size:.85rem;
+    border-left:3px solid var(--blue);padding-left:10px;
+    display:block;margin-bottom:10px;
+  }
+  .block-head h2{font-size:2.3rem;color:var(--navy);}
+  .block-head p{color:var(--gray);margin-top:12px;}
+
+  /* ---------- product grid ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  .card{
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#fff;
+    padding:26px 22px 22px;
+    display:flex;flex-direction:column;
+    transition:background .15s;
+  }
+  .card:hover{background:var(--blue-tint);}
+  .card .tag{
+    align-self:flex-start;
+    background:var(--navy);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;font-size:.78rem;
+    padding:3px 8px;
+    margin-bottom:16px;
+  }
+  .card .icon{height:96px;display:flex;align-items:flex-end;margin-bottom:14px;}
+  .card .icon svg{width:100%;height:100%;}
+  .card h3{font-size:1.5rem;color:var(--navy);}
+  .card .model{
+    font-family:'Work Sans',sans-serif;font-weight:600;
+    color:var(--blue);font-size:.85rem;margin-top:2px;
+  }
+  .card p.desc{color:var(--gray);font-size:.92rem;margin-top:10px;flex:1;}
+  .card .spec-mini{
+    display:flex;justify-content:space-between;
+    font-size:.8rem;color:var(--gray);
+    border-top:1px solid var(--line);
+    padding-top:10px;margin-top:14px;
+  }
+  .card .spec-mini strong{color:var(--ink);}
+  .card .card-actions{display:flex;gap:14px;align-items:center;margin-top:16px;flex-wrap:wrap;}
+  .card button.view{
+    background:none;border:none;
+    color:var(--navy);font-weight:600;
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:1.05rem;
+    text-align:left;padding:0;
+    display:flex;align-items:center;gap:6px;
+  }
+  .card button.view:hover{color:var(--blue);}
+  .card a.pdf-link{
+    color:var(--orange);font-weight:600;font-size:.82rem;
+    text-decoration:none;display:flex;align-items:center;gap:5px;
+  }
+  .card a.pdf-link:hover{text-decoration:underline;}
+
+  /* ---------- sobre nosotros ---------- */
+  .values{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;margin-top:10px;
+  }
+  .values .v{border-top:3px solid var(--orange);padding-top:14px;}
+  .values .v h4{font-size:1.25rem;color:var(--navy);}
+  .values .v p{color:var(--gray);font-size:.92rem;margin-top:6px;}
+
+  .about-banner{
+    background:var(--navy);color:#fff;
+    padding:40px 32px;margin-top:44px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:24px;flex-wrap:wrap;
+  }
+  .about-banner h3{font-size:1.9rem;color:#fff;max-width:26ch;}
+  .about-banner p{color:#B9CBE6;max-width:32ch;font-size:.92rem;}
+
+  /* ---------- noticias ---------- */
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;}
+  .news-item{border-top:2px solid var(--blue);padding-top:14px;}
+  .news-item .date{color:var(--orange);font-weight:600;font-size:.8rem;}
+  .news-item h4{font-size:1.3rem;margin-top:6px;color:var(--navy);}
+  .news-item p{color:var(--gray);font-size:.9rem;margin-top:8px;}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;
+  }
+  .contact-info h3{font-size:1.6rem;color:var(--navy);margin-bottom:14px;}
+  .contact-info .row{display:flex;gap:12px;margin-bottom:16px;color:var(--gray);}
+  .contact-info .row strong{display:block;color:var(--ink);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;}
+  form.contact-form{display:flex;flex-direction:column;gap:14px;}
+  form.contact-form input, form.contact-form textarea, form.contact-form select{
+    padding:12px 14px;border:1px solid var(--line);
+    font-family:inherit;font-size:.95rem;background:#fff;
+  }
+  form.contact-form input:focus, form.contact-form textarea:focus, form.contact-form select:focus{
+    outline:none;border-color:var(--blue);
+  }
+  form.contact-form label{font-weight:600;font-size:.85rem;color:var(--gray);margin-bottom:-8px;}
+  form.contact-form textarea{resize:vertical;min-height:110px;}
+  .form-note{font-size:.8rem;color:var(--gray);margin-top:6px;}
+
+  footer{
+    background:var(--navy);color:#B9CBE6;
+    padding:34px 24px;font-size:.85rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+  footer strong{color:#fff;}
+
+  /* ---------- modal ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(10,42,94,.72);
+    display:none;align-items:center;justify-content:center;
+    padding:20px;z-index:100;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:#fff;max-width:760px;width:100%;
+    max-height:88vh;overflow-y:auto;
+    border-top:6px solid var(--blue);
+    position:relative;
+  }
+  .modal-close{
+    position:absolute;top:14px;right:16px;
+    background:none;border:none;font-size:1.6rem;line-height:1;
+    color:var(--gray);
+  }
+  .modal-body{padding:38px;}
+  .modal-body .tag{
+    display:inline-block;background:var(--navy);color:#fff;
+    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;
+    padding:3px 9px;margin-bottom:14px;
+  }
+  .modal-body h2{font-size:2.1rem;color:var(--navy);}
+  .modal-body .model{color:var(--blue);font-weight:600;font-size:.95rem;margin-top:2px;}
+  .modal-body .icon-lg{height:150px;margin:22px 0;display:flex;align-items:flex-end;justify-content:center;background:var(--blue-tint);border:1px solid var(--line);}
+  .modal-body .icon-lg svg{height:74%;}
+  .modal-body p.desc{color:var(--gray);margin:16px 0 22px;}
+  .spec-group{margin-bottom:18px;}
+  .spec-group h4{
+    font-size:.78rem;font-weight:700;letter-spacing:.06em;
+    color:var(--blue);text-transform:uppercase;margin-bottom:6px;
+  }
+  table.spec-table{width:100%;border-collapse:collapse;margin-bottom:10px;}
+  table.spec-table tr{border-bottom:1px solid var(--line);}
+  table.spec-table td{padding:8px 4px;font-size:.9rem;}
+  table.spec-table td:first-child{color:var(--gray);width:56%;}
+  table.spec-table td:last-child{color:var(--ink);font-weight:600;}
+  .modal-body .apps{margin-bottom:24px;}
+  .modal-body .apps h4{font-size:1.1rem;color:var(--navy);margin-bottom:8px;}
+  .modal-body .apps ul{margin:0;padding-left:18px;color:var(--gray);font-size:.92rem;}
+  .modal-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .disclaimer{font-size:.76rem;color:var(--gray);margin-top:20px;border-top:1px solid var(--line);padding-top:12px;}
+
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr;padding-top:40px;}
+    .hero h1{font-size:2.4rem;}
+    .contact-grid{grid-template-columns:1fr;}
+    nav.tabs{width:100%;justify-content:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-name">XCMGMACHINERY.COM.CO<small>MAQUINARIA &amp; EQUIPO DE OBRA</small></div>
+    </div>
+    <nav class="tabs">
+      <button data-page="inicio" class="active">Inicio</button>
+      <button data-page="productos">Productos</button>
+      <button data-page="sobre-nosotros">Sobre nosotros</button>
+      <button data-page="noticias">Noticias</button>
+      <button data-page="contactenos">Contáctenos</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <section id="inicio" class="page active">
+    <div class="hero">
+      <div>
+        <span class="hero-tag">DISTRIBUIDOR DE MAQUINARIA XCMG</span>
+        <h1>Equipos que <span>trabajan</span><br>tanto como usted</h1>
+        <p class="lead">Excavadoras, minicargador y montacargas construidos para durar. Máquinas robustas, fichas técnicas verificadas y soporte real — sin obsolescencia programada.</p>
+        <div class="hero-actions">
+          <button class="btn orange" data-goto="productos">Ver catálogo</button>
+          <button class="btn ghost" data-goto="contactenos">Solicitar cotización</button>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="118" width="180" height="6" fill="#1E4C8A"/>
+          <rect x="30" y="80" width="60" height="38" fill="#F2921D"/>
+          <rect x="30" y="80" width="60" height="10" fill="#0A2A5E" opacity=".25"/>
+          <circle cx="45" cy="122" r="12" fill="#0A2A5E" stroke="#F2921D" stroke-width="3"/>
+          <circle cx="75" cy="122" r="12" fill="#0A2A5E" stroke="#F2921D" stroke-width="3"/>
+          <path d="M90 90 L150 70 L158 78 L120 96 Z" fill="#F2921D"/>
+          <path d="M150 70 L172 46" stroke="#F2921D" stroke-width="8" stroke-linecap="round"/>
+          <path d="M172 46 L184 60" stroke="#1E4C8A" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="184" cy="60" r="4" fill="#0057A8"/>
+        </svg>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="strip-inner">
+        <div><strong>4</strong><span>Líneas de producto activas</span></div>
+        <div><strong>1&ndash;90</strong><span>Días de entrega estimados</span></div>
+        <div><strong>12M</strong><span>Meses de garantía de fábrica</span></div>
+        <div><strong>24/7</strong><span>Soporte para repuestos</span></div>
+      </div>
+    </div>
+    <div class="wrap block">
+      <div class="block-head">
+        <span class="kicker">CATÁLOGO</span>
+        <h2>Nuestros equipos</h2>
+        <p>Seleccione una máquina para ver su ficha técnica y descargar el catálogo original del fabricante en PDF.</p>
+      </div>
+      <div class="grid" id="product-grid-home"></div>
+      <div style="margin-top:28px;padding-bottom:12px;">
+        <button class="btn ghost" data-goto="productos">Ver catálogo completo &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos" class="page">
+    <div class="wrap block">
+      <div class="block-head">
+        <span class="kicker">CATÁLOGO</span>
+        <h2>Nuestros equipos</h2>
+        <p>Seleccione una máquina para ver su ficha técnica y descargar el catálogo original del fabricante en PDF.</p>
+      </div>
+      <div class="grid" id="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="sobre-nosotros" class="page">
+    <div class="wrap block">
+      <div class="block-head">
+        <span class="kicker">QUIÉNES SOMOS</span>
+        <h2>Maquinaria pensada para durar</h2>
+        <p>Somos distribuidores de maquinaria de construcción y movimiento de tierra. Trabajamos con equipos robustos, reparables y con repuestos disponibles a largo plazo — no máquinas desechables.</p>
+      </div>
+      <div class="values">
+        <div class="v">
+          <h4>Sin obsolescencia programada</h4>
+          <p>Elegimos equipos con componentes estándar, mecánica reparable y vida útil larga, no máquinas diseñadas para fallar a corto plazo.</p>
+        </div>
+        <div class="v">
+          <h4>Fichas técnicas verificadas</h4>
+          <p>Cada máquina incluye su ficha técnica original del fabricante, descargable en PDF, sin datos inventados.</p>
+        </div>
+        <div class="v">
+          <h4>Soporte técnico</h4>
+          <p>Ingenieros disponibles para dar servicio a la maquinaria, incluso en sitio.</p>
+        </div>
+        <div class="v">
+          <h4>Precios directos</h4>
+          <p>Trabajamos sin intermediarios innecesarios para ofrecer costos competitivos por unidad y por flota.</p>
+        </div>
+      </div>
+
+      <div class="block-head" style="margin-top:56px;">
+        <span class="kicker">EL FABRICANTE</span>
+        <h2>Respaldados por XCMG</h2>
+        <p>Los equipos que distribuimos son fabricados por XCMG (Xuzhou Construction Machinery Group), uno de los grupos de maquinaria de construcción más grandes del mundo. Fundada en 1943 en Xuzhou, China, XCMG se ha mantenido a la vanguardia de la industria china del sector y hoy es la tercera compañía de maquinaria de construcción más grande a nivel mundial, con una red de servicio, repuestos y soporte técnico presente en más de 180 países.</p>
+      </div>
+      <div class="strip" style="background:var(--blue-tint);margin:0 0 20px;">
+        <div class="strip-inner" style="color:var(--navy);">
+          <div><strong style="color:var(--blue);">1943</strong><span style="color:var(--gray);">Año de fundación</span></div>
+          <div><strong style="color:var(--blue);">Top 3</strong><span style="color:var(--gray);">Fabricante de maquinaria más grande del mundo</span></div>
+          <div><strong style="color:var(--blue);">183</strong><span style="color:var(--gray);">Países y regiones con presencia</span></div>
+          <div><strong style="color:var(--blue);">2,000+</strong><span style="color:var(--gray);">Puntos de servicio a nivel global</span></div>
+        </div>
+      </div>
+      <div class="values">
+        <div class="v">
+          <h4>US$1,600M+ en exportaciones</h4>
+          <p>Volumen de exportación anual superior a los 1,600 millones de dólares.</p>
+        </div>
+        <div class="v">
+          <h4>6 centros de I+D</h4>
+          <p>Centros de investigación internacionales dedicados a innovación en maquinaria pesada.</p>
+        </div>
+        <div class="v">
+          <h4>40 oficinas en el extranjero</h4>
+          <p>Y 46 grandes centros de repuestos para garantizar disponibilidad de piezas.</p>
+        </div>
+        <div class="v">
+          <h4>6,000+ ingenieros técnicos</h4>
+          <p>Y más de 300 distribuidores en el extranjero, incluido nuestro equipo.</p>
+        </div>
+      </div>
+
+      <div class="about-banner">
+        <h3>¿Buscando la máquina correcta para su obra?</h3>
+        <p>Cuéntenos qué necesita y le recomendamos el equipo adecuado según carga, terreno y presupuesto.</p>
+        <button class="btn orange" data-goto="contactenos">Hablar con ventas</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section id="noticias" class="page">
+    <div class="wrap block">
+      <div class="block-head">
+        <span class="kicker">ACTUALIDAD</span>
+        <h2>Noticias</h2>
+        <p>Novedades de producto, disponibilidad de inventario y noticias del sector.</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-item">
+          <span class="date">Inventario</span>
+          <h4>Nuevo lote de excavadoras XE60GA y XE75GA</h4>
+          <p>Ampliamos stock disponible de miniexcavadoras de orugas para entrega en 1 a 90 días según configuración.</p>
+        </div>
+        <div class="news-item">
+          <span class="date">Servicio</span>
+          <h4>Ampliamos cobertura de servicio técnico</h4>
+          <p>Ingenieros disponibles para mantenimiento y reparación de maquinaria en sitio, dentro y fuera del país.</p>
+        </div>
+        <div class="news-item">
+          <span class="date">Producto</span>
+          <h4>Montacargas diésel XCB-D35 ya disponible</h4>
+          <p>Sumamos la máquina elevadora XCB-D35 a nuestro catálogo de equipos para patio e interior de obra.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTENOS -->
+  <section id="contactenos" class="page">
+    <div class="wrap block">
+      <div class="block-head">
+        <span class="kicker">HABLEMOS</span>
+        <h2>Contáctenos</h2>
+        <p>Escríbanos para cotizaciones, disponibilidad de inventario o soporte técnico.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Datos de contacto</h3>
+          <div class="row"><div><strong>Teléfono / WhatsApp</strong>+00 000 000 0000</div></div>
+          <div class="row"><div><strong>Correo electrónico</strong>ventas@xcmgmachinery.com.co</div></div>
+          <div class="row"><div><strong>Dirección</strong>Parque industrial, zona de maquinaria pesada</div></div>
+          <div class="row"><div><strong>Horario</strong>Lunes a sábado, 8:00 a.m. &ndash; 6:00 p.m.</div></div>
+          <p class="form-note">Reemplace estos datos con la información real de su empresa.</p>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulario de ejemplo: conecte esto a su correo o CRM.');">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" placeholder="Su nombre" required>
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" type="email" placeholder="usted@empresa.com" required>
+          <label for="maquina">Máquina de interés</label>
+          <select id="maquina">
+            <option>Excavadora de orugas XE75GA</option>
+            <option>Minicargador XC750K</option>
+            <option>Excavadora XE60GA</option>
+            <option>Montacargas XCB-D35</option>
+            <option>Otro / no estoy seguro</option>
+          </select>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" placeholder="Cuéntenos qué necesita..."></textarea>
+          <button class="btn orange" type="submit" style="align-self:flex-start;">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div><strong>Xcmgmachinery.com.co</strong> — Maquinaria &amp; equipo de obra</div>
+  <div>© 2026. Equipos duraderos, sin obsolescencia programada.</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ---------------- data ----------------
+   Especificaciones tomadas directamente de las fichas técnicas
+   originales del fabricante (PDF en /fichas-tecnicas). */
+const products = [
+  {
+    id: "xe75ga",
+    tag: "EXCAVADORA DE ORUGAS",
+    name: "Excavadora de orugas XE75GA",
+    model: "Modelo XE75GA",
+    pdf: "fichas-tecnicas/EXCAVADORA_XE75GA.pdf",
+    miniSpec: {label:"Peso operativo", value:"7,700 kg"},
+    desc: "Excavadora hidráulica de orugas serie G, con tanque de combustible extragrande, dispositivo de trabajo reforzado y válvula principal optimizada para movimientos complejos con mayor eficiencia energética.",
+    specGroups: [
+      { title:"Información comercial", rows:[
+        ["Categoría de producto","Excavadora de orugas"],
+        ["Marca","XCMG"],
+        ["Tiempo de entrega","1 &ndash; 90 días"],
+        ["Capacidad de suministro","1 &ndash; 500 unidades / año"],
+        ["Origen del producto","China"],
+        ["Servicio postventa","Ingenieros disponibles para servicio en el extranjero"],
+        ["Clasificación","4.9 / 5 (177 votos)"]
+      ]},
+      { title:"Motor", rows:[
+        ["Modelo","Kubota D1105-K"],
+        ["Potencia nominal","18.5 kW / 2,000 rpm"],
+        ["Par máximo","206.9 N·m / 1,100&ndash;1,500 rpm"],
+        ["Cilindrada","2.615 L"],
+        ["Cilindros","4, refrigerado por agua, turboalimentado"]
+      ]},
+      { title:"Dispositivo de trabajo", rows:[
+        ["Longitud estándar de pluma","3,720 mm"],
+        ["Longitud estándar de brazo","1,622 mm"],
+        ["Capacidad de cucharón estándar","0.33 m³"],
+        ["Capacidad de cucharón opcional","0.18 &ndash; 0.35 m³"]
+      ]},
+      { title:"Dimensiones exteriores", rows:[
+        ["Longitud total","6,185 mm"],
+        ["Ancho total","2,265 mm"],
+        ["Altura total","2,645 mm"],
+        ["Ancho de la plataforma","2,260 mm"],
+        ["Ancho total del tren de rodaje","2,250 mm"],
+        ["Radio mínimo de giro de cola","1,840 mm"]
+      ]},
+      { title:"Alcance de trabajo", rows:[
+        ["Altura máxima de excavación","7,085 mm"],
+        ["Altura máxima de descarga","5,160 mm"],
+        ["Profundidad máxima de excavación","4,020 mm"],
+        ["Profundidad máx. de excavación en paredes verticales","2,960 mm"],
+        ["Alcance máximo de excavación","6,260 mm"],
+        ["Radio mínimo de giro","1,818 mm"]
+      ]},
+      { title:"Rendimiento", rows:[
+        ["Velocidad de desplazamiento","4.3 / 2.5 km/h"],
+        ["Velocidad de rotación","11 r/min"],
+        ["Capacidad de ascenso","35°"],
+        ["Fuerza de excavación (cucharón)","57 kN"],
+        ["Fuerza de excavación (brazo)","38 kN"]
+      ]},
+      { title:"Capacidad de aceite", rows:[
+        ["Tanque de combustible","170 L"],
+        ["Tanque hidráulico","76 L"]
+      ]}
+    ],
+    apps: ["Excavación de zanjas y cimentaciones","Obra municipal y redes de agua","Urbanizaciones y obra vial ligera","Jardinería y paisajismo a gran escala"],
+    icon: `<svg viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="86" width="130" height="8" rx="1" fill="#0A2A5E"/>
+      <rect x="20" y="60" width="80" height="34" fill="#F2921D"/>
+      <rect x="20" y="60" width="80" height="8" fill="#0A2A5E" opacity=".2"/>
+      <rect x="60" y="40" width="34" height="26" fill="#1E4C8A"/>
+      <path d="M94 50 L150 34 L158 42 L118 56 Z" fill="#F2921D"/>
+      <path d="M150 34 L178 14" stroke="#F2921D" stroke-width="9" stroke-linecap="round"/>
+      <path d="M178 14 L190 30" stroke="#1E4C8A" stroke-width="9" stroke-linecap="round"/>
+      <circle cx="190" cy="30" r="4" fill="#0057A8"/>
+      <circle cx="40" cy="94" r="4" fill="#F2921D"/><circle cx="52" cy="94" r="4" fill="#F2921D"/><circle cx="64" cy="94" r="4" fill="#F2921D"/><circle cx="76" cy="94" r="4" fill="#F2921D"/>
+    </svg>`
+  },
+  {
+    id: "xc750k",
+    tag: "CARGADOR",
+    name: "Cargadora compacta XC750K",
+    model: "Modelo XC750K",
+    pdf: "fichas-tecnicas/MINICARGADOR_XC750K.pdf",
+    miniSpec: {label:"Carga nominal", value:"900 kg"},
+    desc: "Cargador de dirección deslizante con motor Yanmar, doble velocidad hasta 18 km/h y dispositivo de accionamiento hidrostático para cambio rápido de accesorios en el sitio de trabajo.",
+    specGroups: [
+      { title:"Información comercial", rows:[
+        ["Categoría de producto","Cargador"],
+        ["Marca","XCMG"],
+        ["Tiempo de entrega","1 &ndash; 90 días"],
+        ["Capacidad de suministro","1 &ndash; 500 unidades / año"],
+        ["Origen del producto","China"],
+        ["Servicio postventa","Ingenieros disponibles para servicio en el extranjero"],
+        ["Clasificación","4.9 / 5 (177 votos)"]
+      ]},
+      { title:"Carga", rows:[
+        ["Carga nominal","900 kg"],
+        ["Carga volcada (estática)","3,400 kg"],
+        ["Fuerza máxima de tunelización","≥ 24 kN"]
+      ]},
+      { title:"Motor", rows:[
+        ["Marca","Yanmar"],
+        ["Potencia nominal","67.3 HP / 50.2 kW"],
+        ["Velocidad nominal","2,300 rpm"],
+        ["Refrigeración","Por agua"]
+      ]},
+      { title:"Rendimiento", rows:[
+        ["Método de funcionamiento","Piloto"],
+        ["Neumáticos","10-16.5"],
+        ["Velocidad máxima","13.5 km/h"]
+      ]},
+      { title:"Sistema hidráulico", rows:[
+        ["Caudal hidráulico","75.9 L/min (119.6 L/min opcional)"],
+        ["Presión hidráulica","210 bar"],
+        ["Tanque diésel","80 L"],
+        ["Tanque de aceite hidráulico","60 L"]
+      ]},
+      { title:"Dimensiones y capacidad de cucharón", rows:[
+        ["Altura máxima de funcionamiento","3,878 mm"],
+        ["Altura superior de cabina","1,950 mm"],
+        ["Longitud sin cucharón","2,533 mm"],
+        ["Longitud con cucharón","3,360 mm"],
+        ["Altura máxima de descarga","2,375 mm"],
+        ["Distancia entre ejes","1,027 mm"],
+        ["Ángulo de salida","25°"],
+        ["Capacidad del cucharón (colmada)","0.45 m³"],
+        ["Capacidad del cucharón (a ras)","0.35 m³"]
+      ]}
+    ],
+    apps: ["Carga y descarga de materiales","Limpieza de establos, arena y carreteras","Remoción rápida de nieve","Uso con barredora, martillo rompedor, taladro helicoidal o zanjadora"],
+    icon: `<svg viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="90" width="120" height="8" fill="#0A2A5E"/>
+      <rect x="46" y="46" width="70" height="46" fill="#F2921D"/>
+      <rect x="46" y="46" width="70" height="10" fill="#0A2A5E" opacity=".2"/>
+      <path d="M116 60 L150 46 L160 70 L138 92 L116 92 Z" fill="#1E4C8A"/>
+      <path d="M160 70 L172 60 L182 76 L168 90 Z" fill="#0057A8"/>
+      <circle cx="66" cy="96" r="14" fill="#0A2A5E" stroke="#F2921D" stroke-width="4"/>
+      <circle cx="122" cy="96" r="14" fill="#0A2A5E" stroke="#F2921D" stroke-width="4"/>
+    </svg>`
+  },
+  {
+    id: "xe60ga",
+    tag: "MINIEXCAVADORA",
+    name: "Excavadora XE60GA",
+    model: "Modelo XE60GA",
+    pdf: "fichas-tecnicas/EXCAVADORA_XE60GA.pdf",
+    miniSpec: {label:"Peso operativo", value:"6,050 kg"},
+    desc: "Miniexcavadora compacta y de radio de giro reducido, ideal para paisajismo, construcción urbana y tendido de tuberías. Motor de alto par con bloqueo hidráulico de topadora estándar.",
+    specGroups: [
+      { title:"Información comercial", rows:[
+        ["Categoría de producto","Miniexcavadora"],
+        ["Marca","XCMG"],
+        ["Tiempo de entrega","1 &ndash; 90 días"],
+        ["Capacidad de suministro","1 &ndash; 500 unidades / año"],
+        ["Origen del producto","China"],
+        ["Servicio postventa","Ingenieros disponibles para servicio en el extranjero"],
+        ["Clasificación","4.9 / 5 (177 votos)"]
+      ]},
+      { title:"Motor", rows:[
+        ["Modelo","Yanmar 4TNV94L"],
+        ["Potencia nominal","35.9 kW / 2,000 rpm"],
+        ["Par máximo","200.8 N·m / 1,400 rpm"],
+        ["Cilindrada","3.054 L"],
+        ["Cilindros","4, inyección directa, refrigerado por agua"]
+      ]},
+      { title:"Dispositivo de trabajo", rows:[
+        ["Longitud de pluma (estándar)","3,000 mm"],
+        ["Longitud de brazo (estándar)","1,600 mm"],
+        ["Capacidad del cucharón","0.25 m³"]
+      ]},
+      { title:"Dimensiones exteriores", rows:[
+        ["Longitud total","6,010 mm"],
+        ["Ancho del plato giratorio","1,880 mm"],
+        ["Altura total","2,650 mm"],
+        ["Distancia entre ejes de oruga","2,135 mm"],
+        ["Ancho total de vía","2,040 mm"],
+        ["Radio mínimo de giro trasero","1,700 mm"]
+      ]},
+      { title:"Alcance de trabajo", rows:[
+        ["Altura máxima de excavación","5,630 mm"],
+        ["Altura máxima de descarga","3,945 mm"],
+        ["Profundidad máxima de excavación","3,830 mm"],
+        ["Profundidad máx. de excavación vertical","2,680 mm"],
+        ["Radio máximo de excavación","6,130 mm"],
+        ["Radio mínimo de giro","2,460 mm"]
+      ]},
+      { title:"Rendimiento", rows:[
+        ["Velocidad de desplazamiento","4.2 / 2.4 km/h"],
+        ["Velocidad de giro","11 r/min"],
+        ["Capacidad de escalada","35°"],
+        ["Fuerza de excavación del cucharón","48.3 kN"],
+        ["Fuerza de excavación del brazo","32.5 kN"],
+        ["Fuerza de tracción máxima","50.5 kN"]
+      ]},
+      { title:"Sistema hidráulico", rows:[
+        ["Bomba principal","Bomba de émbolo"],
+        ["Caudal nominal","152 L/min"],
+        ["Presión válvula de seguridad principal","24.5 MPa"],
+        ["Presión sistema de desplazamiento","26 MPa"],
+        ["Presión sistema de giro","21.6 MPa"],
+        ["Presión sistema piloto","3.5 MPa"]
+      ]},
+      { title:"Capacidad de aceite", rows:[
+        ["Tanque de combustible","130 L"],
+        ["Tanque de aceite hidráulico","85 L"],
+        ["Aceite de motor","12 L"]
+      ]}
+    ],
+    apps: ["Obra urbana en espacios reducidos","Paisajismo y jardinería","Tendido de tuberías","Mantenimiento vial y municipal"],
+    icon: `<svg viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="86" width="110" height="8" fill="#0A2A5E"/>
+      <rect x="22" y="58" width="66" height="30" fill="#F2921D"/>
+      <rect x="22" y="58" width="66" height="8" fill="#0A2A5E" opacity=".2"/>
+      <rect x="52" y="40" width="28" height="22" fill="#1E4C8A"/>
+      <path d="M80 48 L128 34 L136 42 L100 54 Z" fill="#F2921D"/>
+      <path d="M128 34 L150 18" stroke="#F2921D" stroke-width="8" stroke-linecap="round"/>
+      <path d="M150 18 L160 32" stroke="#1E4C8A" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="160" cy="32" r="4" fill="#0057A8"/>
+      <circle cx="38" cy="90" r="4" fill="#F2921D"/><circle cx="50" cy="90" r="4" fill="#F2921D"/><circle cx="62" cy="90" r="4" fill="#F2921D"/>
+    </svg>`
+  },
+  {
+    id: "xcbd35",
+    tag: "MONTACARGAS",
+    name: "Montacargas diésel XCB-D35",
+    model: "Modelo XCB-D35",
+    pdf: "fichas-tecnicas/MONTACARGAS_XCB-D35.pdf",
+    miniSpec: {label:"Capacidad de carga", value:"3,000 kg"},
+    desc: "Montacargas diésel de combustión interna, motor conforme a normativa de emisiones StageIIIA, con carrocería de fácil mantenimiento y peldaño de acceso amplio para el operador.",
+    specGroups: [
+      { title:"Información comercial", rows:[
+        ["Categoría de producto","Máquina elevadora"],
+        ["Marca","XCMG"],
+        ["Tiempo de entrega","1 &ndash; 90 días"],
+        ["Capacidad de suministro","1 &ndash; 500 unidades / año"],
+        ["Origen del producto","China"],
+        ["Servicio postventa","Ingenieros disponibles para servicio en el extranjero"],
+        ["Clasificación","4.9 / 5 (177 votos)"]
+      ]},
+      { title:"Motor (opciones)", rows:[
+        ["Modelos disponibles","Xinchai 4D27G31 / Mitsubishi S4S / Isuzu C240"],
+        ["Potencia nominal","≈ 35 &ndash; 37 kW"],
+        ["Cilindros","4"],
+        ["Capacidad del tanque de combustible","70 L"]
+      ]},
+      { title:"Capacidad y dimensiones", rows:[
+        ["Capacidad de carga","3,000 kg"],
+        ["Centro de carga","500 mm"],
+        ["Altura máx. de elevación","3,000 mm"],
+        ["Tamaño de horquilla (L×An×Es)","1,070 × 125 × 50 mm"],
+        ["Peso del vehículo","4,780 kg"]
+      ]},
+      { title:"Chasis y rodaje", rows:[
+        ["Ancho total","1,285 mm"],
+        ["Radio de giro (exterior)","2,495 mm"],
+        ["Distancia entre ejes","1,700 mm"],
+        ["Presión del sistema hidráulico","180 kg/cm²"]
+      ]},
+      { title:"Rendimiento", rows:[
+        ["Velocidad de desplazamiento (con/sin carga)","18 / 19.5 km/h"],
+        ["Velocidad de elevación","450 / 500 mm/s"],
+        ["Capacidad de pendiente","18 / 20%"]
+      ]}
+    ],
+    apps: ["Movimiento de materiales en patio","Carga y descarga de camiones","Almacén y logística de obra","Manejo de tarimas y contenedores"],
+    icon: `<svg viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="30" y="94" width="110" height="8" fill="#0A2A5E"/>
+      <rect x="44" y="52" width="66" height="42" fill="#F2921D"/>
+      <rect x="44" y="52" width="66" height="9" fill="#0A2A5E" opacity=".2"/>
+      <rect x="108" y="20" width="8" height="76" fill="#1E4C8A"/>
+      <rect x="108" y="60" width="30" height="6" fill="#1E4C8A"/>
+      <rect x="132" y="58" width="4" height="20" fill="#0057A8"/>
+      <circle cx="62" cy="98" r="14" fill="#0A2A5E" stroke="#F2921D" stroke-width="4"/>
+      <circle cx="118" cy="98" r="10" fill="#0A2A5E" stroke="#F2921D" stroke-width="4"/>
+    </svg>`
+  }
+];
+
+/* ---------------- render product grids ---------------- */
+function renderGrid(containerId){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  products.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <span class="tag">${p.tag}</span>
+      <div class="icon">${p.icon}</div>
+      <h3>${p.name.replace(p.model.replace('Modelo ',''), '').trim()}</h3>
+      <div class="model">${p.model}</div>
+      <p class="desc">${p.desc}</p>
+      <div class="spec-mini"><span>${p.miniSpec.label}</span><strong>${p.miniSpec.value}</strong></div>
+      <div class="card-actions">
+        <button class="view" data-id="${p.id}">Ver ficha técnica &rarr;</button>
+        <a class="pdf-link" href="${p.pdf}" target="_blank" rel="noopener">Descargar PDF</a>
+      </div>
+    `;
+    el.appendChild(card);
+  });
+  el.addEventListener('click', e => {
+    const btn = e.target.closest('button.view');
+    if(btn) openModal(btn.dataset.id);
+  });
+}
+renderGrid('product-grid');
+renderGrid('product-grid-home');
+
+/* ---------------- nav switching ---------------- */
+function showPage(id){
+  document.querySelectorAll('.page').forEach(s => s.classList.toggle('active', s.id === id));
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.page === id));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => showPage(b.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(b => b.addEventListener('click', () => showPage(b.dataset.goto)));
+
+/* ---------------- modal ---------------- */
+const overlay = document.getElementById('modal-overlay');
+const modalBody = document.getElementById('modal-body');
+
+function openModal(id){
+  const p = products.find(x => x.id === id);
+  if(!p) return;
+  modalBody.innerHTML = `
+    <span class="tag">${p.tag}</span>
+    <h2>${p.name.replace(p.model.replace('Modelo ',''), '').trim()}</h2>
+    <div class="model">${p.model}</div>
+    <div class="icon-lg">${p.icon}</div>
+    <p class="desc">${p.desc}</p>
+    ${p.specGroups.map(g => `
+      <div class="spec-group">
+        <h4>${g.title}</h4>
+        <table class="spec-table">
+          ${g.rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}
+        </table>
+      </div>
+    `).join('')}
+    <div class="apps">
+      <h4>Aplicaciones recomendadas</h4>
+      <ul>${p.apps.map(a => `<li>${a}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-actions">
+      <a class="btn orange" href="${p.pdf}" target="_blank" rel="noopener">Descargar ficha técnica en PDF</a>
+      <button class="btn ghost" data-goto="contactenos" id="quote-btn">Solicitar cotización</button>
+    </div>
+    <p class="disclaimer">Especificaciones tomadas de la ficha técnica original del fabricante (PDF adjunto). Pueden variar según configuración de motor y año de producción.</p>
+  `;
+  overlay.classList.add('open');
+  document.getElementById('quote-btn').addEventListener('click', () => { closeModal(); showPage('contactenos'); });
+}
+function closeModal(){ overlay.classList.remove('open'); }
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
