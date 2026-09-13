@@ -241,7 +241,12 @@
     padding:3px 8px;
     margin-bottom:16px;
   }
-  .card .icon{height:96px;display:flex;align-items:flex-end;margin-bottom:14px;}
+  .card .icon{
+    height:150px;margin:0 -22px 14px;
+    background:var(--blue-tint);
+    overflow:hidden;
+  }
+  .card .icon img{width:100%;height:100%;object-fit:contain;display:block;}
   .card .icon svg{width:100%;height:100%;}
   .card h3{font-size:1.5rem;color:var(--navy);}
   .card .model{
@@ -361,6 +366,27 @@
   .modal-body .model{color:var(--blue);font-weight:600;font-size:.95rem;margin-top:2px;}
   .modal-body .icon-lg{height:150px;margin:22px 0;display:flex;align-items:flex-end;justify-content:center;background:var(--blue-tint);border:1px solid var(--line);}
   .modal-body .icon-lg svg{height:74%;}
+  .modal-body .gallery{margin:22px 0;}
+  .modal-body .gallery-main{
+    background:var(--blue-tint);border:1px solid var(--line);
+    height:320px;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;margin-bottom:10px;
+  }
+  .modal-body .gallery-main img,
+  .modal-body .gallery-main video{width:100%;height:100%;object-fit:contain;display:block;}
+  .modal-body .gallery-thumbs{display:flex;gap:10px;flex-wrap:wrap;}
+  .modal-body .gallery-thumbs button{
+    width:74px;height:56px;padding:0;
+    border:2px solid transparent;background:var(--blue-tint);
+    cursor:pointer;overflow:hidden;
+  }
+  .modal-body .gallery-thumbs button.active{border-color:var(--orange);}
+  .modal-body .gallery-thumbs button img{width:100%;height:100%;object-fit:cover;display:block;}
+  .modal-body .gallery-thumbs button.video-thumb{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    background:var(--navy);color:#fff;font-size:.7rem;font-weight:700;
+    font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em;
+  }
   .modal-body p.desc{color:var(--gray);margin:16px 0 22px;}
   .spec-group{margin-bottom:18px;}
   .spec-group h4{
@@ -648,6 +674,10 @@ const products = [
     name: "Excavadora de orugas XE75GA",
     model: "Modelo XE75GA",
     pdf: "EXCAVADORA_XE75GA.pdf",
+    media: {
+      images: ["xe75ga-1.jpg", "xe75ga-2.jpg"],
+      video: "xe75ga-video.mp4"
+    },
     miniSpec: {label:"Peso operativo", value:"7,700 kg"},
     desc: "Excavadora hidráulica de orugas serie G, con tanque de combustible extragrande, dispositivo de trabajo reforzado y válvula principal optimizada para movimientos complejos con mayor eficiencia energética.",
     features: [
@@ -737,6 +767,10 @@ const products = [
     name: "Cargadora compacta XC750K",
     model: "Modelo XC750K",
     pdf: "MINICARGADOR_XC750K.pdf",
+    media: {
+      images: ["xc750k-1.jpg", "xc750k-2.jpg"],
+      video: "xc750k-video.mp4"
+    },
     miniSpec: {label:"Carga nominal", value:"900 kg"},
     desc: "Minicargador compacto con configuración de marcha de dos velocidades, cabina presurizada y aire acondicionado. Adopta un sistema hidráulico de gran flujo pensado para condiciones exigentes como limpieza de establos, arena, pasto apilado y limpieza de vías.",
     features: [
@@ -824,6 +858,10 @@ const products = [
     name: "Excavadora XE60GA",
     model: "Modelo XE60GA",
     pdf: "EXCAVADORA_XE60GA.pdf",
+    media: {
+      images: ["xe60ga-1.jpg", "xe60ga-2.jpg"],
+      video: "xe60ga-video.mp4"
+    },
     miniSpec: {label:"Peso operativo", value:"6,050 kg"},
     desc: "Miniexcavadora compacta y de radio de giro reducido, ideal para paisajismo, construcción urbana y tendido de tuberías. Motor de alto par con bloqueo hidráulico de topadora estándar.",
     specGroups: [
@@ -905,6 +943,10 @@ const products = [
     name: "Montacargas diésel XCB-D35",
     model: "Modelo XCB-D35",
     pdf: "MONTACARGAS_XCB-D35.pdf",
+    media: {
+      images: ["xcb-d35-1.jpg", "xcb-d35-2.jpg"],
+      video: "xcb-d35-video.mp4"
+    },
     miniSpec: {label:"Capacidad de carga", value:"3,000 kg"},
     desc: "Montacargas diésel XCMG de 3.5 t con altura de mástil de 2,075 mm. Usa motor Nacional III de Xinchai, de bajo consumo y potencia fuerte para carga y descarga, con buena capacidad de tracción en vías exteriores ligeramente irregulares.",
     features: [
@@ -992,7 +1034,7 @@ function renderGrid(containerId){
     card.className = 'card';
     card.innerHTML = `
       <span class="tag">${p.tag}</span>
-      <div class="icon">${p.icon}</div>
+      <div class="icon">${p.media ? `<img src="${p.media.images[0]}" alt="${p.name}">` : p.icon}</div>
       <h3>${p.name.replace(p.model.replace('Modelo ',''), '').trim()}</h3>
       <div class="model">${p.model}</div>
       <p class="desc">${p.desc}</p>
@@ -1032,7 +1074,16 @@ function openModal(id){
     <span class="tag">${p.tag}</span>
     <h2>${p.name.replace(p.model.replace('Modelo ',''), '').trim()}</h2>
     <div class="model">${p.model}</div>
-    <div class="icon-lg">${p.icon}</div>
+    ${p.media ? `
+    <div class="gallery">
+      <div class="gallery-main" id="gallery-main">
+        <img src="${p.media.images[0]}" alt="${p.name}">
+      </div>
+      <div class="gallery-thumbs">
+        ${p.media.images.map((img,i) => `<button class="thumb-btn${i===0?' active':''}" data-type="image" data-src="${img}"><img src="${img}" alt="${p.name} ${i+1}"></button>`).join('')}
+        ${p.media.video ? `<button class="thumb-btn video-thumb" data-type="video" data-src="${p.media.video}">&#9658; VIDEO</button>` : ''}
+      </div>
+    </div>` : `<div class="icon-lg">${p.icon}</div>`}
     <p class="desc">${p.desc}</p>
     ${p.features ? `
     <div class="features">
@@ -1059,6 +1110,21 @@ function openModal(id){
   `;
   overlay.classList.add('open');
   document.getElementById('quote-btn').addEventListener('click', () => { closeModal(); showPage('contactenos'); });
+  if(p.media){
+    const galleryMain = document.getElementById('gallery-main');
+    modalBody.querySelectorAll('.thumb-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modalBody.querySelectorAll('.thumb-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const src = btn.dataset.src;
+        if(btn.dataset.type === 'video'){
+          galleryMain.innerHTML = `<video src="${src}" controls autoplay playsinline></video>`;
+        } else {
+          galleryMain.innerHTML = `<img src="${src}" alt="${p.name}">`;
+        }
+      });
+    });
+  }
 }
 function closeModal(){ overlay.classList.remove('open'); }
 
