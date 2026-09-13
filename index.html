@@ -153,7 +153,7 @@
 
   .hero-art{
     position:relative;
-    aspect-ratio:1/1;
+    aspect-ratio:1200/1065;
     background:var(--navy);
     display:flex;align-items:center;justify-content:center;
     overflow:hidden;
@@ -290,6 +290,16 @@
   .about-banner h3{font-size:1.9rem;color:#fff;max-width:26ch;}
   .about-banner p{color:#B9CBE6;max-width:32ch;font-size:.92rem;}
 
+  .photo-banner{
+    width:100%;border-radius:10px;overflow:hidden;
+    margin:36px 0;
+    aspect-ratio:16/7;
+  }
+  .photo-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+  @media (max-width:700px){
+    .photo-banner{aspect-ratio:4/3;}
+  }
+
   /* ---------- noticias ---------- */
   .news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;}
   .news-item{border-top:2px solid var(--blue);padding-top:14px;}
@@ -376,7 +386,21 @@
     .hero{grid-template-columns:1fr;padding-top:40px;}
     .hero h1{font-size:2.4rem;}
     .contact-grid{grid-template-columns:1fr;}
-    nav.tabs{width:100%;justify-content:flex-start;}
+    nav.tabs{
+      width:100%;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      justify-content:flex-start;
+    }
+    nav.tabs::-webkit-scrollbar{display:none;}
+    nav.tabs button{
+      flex:none;
+      padding:10px 12px;
+      font-size:.94rem;
+      white-space:nowrap;
+    }
   }
 </style>
 </head>
@@ -412,7 +436,7 @@
         </div>
       </div>
       <div class="hero-art">
-        <img src="hero-backhoe.jpg" alt="Retroexcavadora cargadora en obra">
+        <img src="about-xcmg.jpg" alt="About XCMG">
       </div>
     </div>
     <div class="strip">
@@ -429,6 +453,9 @@
       </div>
     </div>
     <div class="wrap block">
+      <div class="photo-banner" style="margin-top:0;">
+        <img src="hero-backhoe.jpg" alt="Retroexcavadora cargadora en obra">
+      </div>
       <div class="block-head">
         <span class="kicker">CATÁLOGO</span>
         <h2>Nuestros equipos</h2>
@@ -570,8 +597,9 @@
       </div>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Datos de contacto</h3>
-          <div class="row"><div><strong>Correo electrónico</strong><a href="mailto:mercado@xcmgmachinery.com">mercado@xcmgmachinery.com</a></div></div>
+          <h3>E-commerce (XCMG-Alibaba)</h3>
+          <div class="row"><div><strong>Sitio web</strong><a href="https://xcmg01.en.alibaba.com/" target="_blank" rel="noopener">https://xcmg01.en.alibaba.com/</a></div></div>
+          <div class="row"><div><strong>Correo electrónico</strong><a href="mailto:xcmgglobal@xcmg.com">xcmgglobal@xcmg.com</a></div></div>
         </div>
         <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulario de ejemplo: conecte esto a su correo o CRM.');">
           <label for="nombre">Nombre</label>
